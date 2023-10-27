@@ -7,10 +7,15 @@ function Diagnostica() {
 
   return (
     <div>
-      Diagnostica
-      <button type="button" className="btn btn-primary" onClick={openNewTab}>
-        Open New Tab
+     <div>
+     <button type="button" className="btn btn-success" onClick={openNewTab}>
+        DIAGNOSTICA
       </button>
+     </div>
+      <br />
+     <div>
+     <p>Click button to Navigate Diagnostica form</p>
+     </div>
     </div>
   );
 }

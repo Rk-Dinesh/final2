@@ -18,15 +18,15 @@ function Page1() {
     const [selectedDisease, setSelectedDisease] = useState(null);
 
     const disease = [
-        { value: "A :", label: "Acute(A)" },
-        { value: "C :", label: "Chronic (C)" },
-        { value: "T :", label: "Traumatic (T)" },
-        { value: "I :", label: "Infective (I)" },
-        { value: "M/E :", label: "Metabolic/Endocrine (M/E)" },
-        { value: "F :", label: "Inflammatory (F)" },
-        { value: "D :", label: "Degenerative (D)" },
-        { value: "G :", label: "Iatrogenic (G)" },
-        { value: "P :", label: "Idiopathic (P)" },
+        { value: ": A :", label: "Acute(A)" },
+        { value: ": C :", label: "Chronic (C)" },
+        { value: ": T :", label: "Traumatic (T)" },
+        { value: ": I :", label: "Infective (I)" },
+        { value: ": M/E :", label: "Metabolic/Endocrine (M/E)" },
+        { value: ": F :", label: "Inflammatory (F)" },
+        { value: ": D :", label: "Degenerative (D)" },
+        { value: ": G :", label: "Iatrogenic (G)" },
+        { value: ": P :", label: "Idiopathic (P)" },
 
     ];
 
@@ -70,8 +70,8 @@ function Page1() {
         },
        
         {
-            title: "Back",
-            onclick : handleBack
+          title: "Back",
+          onClick: handleBack, 
         },
         {
           title: "Next",

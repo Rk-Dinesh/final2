@@ -8,24 +8,22 @@ import Radio from '@/components/ui/Radio';
 function Page() {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
-  const [region, setRegion] = useState(""); 
+  const [region, setRegion] = useState("");
 
   const handleChange = (e) => {
     setValue(e.target.value);
-    setRegion(e.target.value); 
+    setRegion(e.target.value);
   };
 
   const handleCancel = () => {
-    window.location.reload(); 
+    window.location.reload();
   };
 
   const buttons = [
     {
       title: "Cancel",
-      onclick : handleCancel,
+      onClick: handleCancel, // Changed "onclick" to "onClick"
     },
-   
-   
     {
       title: "Next",
       onClick: () => {
@@ -47,7 +45,7 @@ function Page() {
             label="CODE :"
             id="defaultsize2"
             type="text"
-            defaultValue={region} 
+            defaultValue={region}
             horizontal
           />
         </div>
@@ -60,14 +58,14 @@ function Page() {
           <Radio
             label="LEFT"
             name="x"
-            value="L :"
+            value="L"
             checked={value === "L"}
             onChange={handleChange}
           />
           <Radio
             label="RIGHT"
             name="x"
-            value="R :"
+            value="R"
             checked={value === "R"}
             onChange={handleChange}
           />
