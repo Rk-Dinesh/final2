@@ -37,7 +37,7 @@ function Page4() {
       const handleNext = () => {
         const newDefaultValue = Foot ? Foot.value : "";
         const combinedDefaultValue = defaultValue + newDefaultValue;
-        navigate(`/test5?defaultValue=${combinedDefaultValue}`);
+        navigate(`/step6?defaultValue=${combinedDefaultValue}`);
       };   
     const styles = {
         option: (provided, state) => ({

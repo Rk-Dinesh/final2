@@ -13,7 +13,6 @@ import UpdateForm from "./pages/doctors/UpdateForm";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Layout from "./layout/Layout";
-import DiagnosticaUpdate from "./pages/patient-details/DiagnosticaUpdate";
 import Page from "./pages/components/Page";
 import Page1 from "./pages/components/Page1";
 import Page2 from "./pages/components/Page2";
@@ -30,7 +29,6 @@ function App() {
     <div>
       <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
-        <Route path="/register" element={<Register />} />
         <Route path="" element={<Login setToken={setToken} />} />
         <Route path="/*" element={token ? <Layout /> : <Navigate to='/' />}>
           <Route path="dashboard" element={<Dashboard />} />
@@ -39,14 +37,14 @@ function App() {
           <Route path="view" element={<Viewpage />} />
           <Route path="form" element={<DoctorForm />} />
           <Route path="updateform/:id" element={<UpdateForm />} />
-          <Route path="test" element={<Page/>} />
-          <Route path="test1" element={<Page1/>} />
-          <Route path="test2" element={<Page2/>} />
-          <Route path="test3" element={<Page3/>} />
-          <Route path="test4" element={<Page4/>} />
-          <Route path="test5" element={<Page5/>} />
-          <Route path="test6" element={<Page6/>} />
-          <Route path="test7" element={<Page7/>} />
+          <Route path="step1" element={<Page/>} />
+          <Route path="step2" element={<Page1/>} />
+          <Route path="step3" element={<Page2/>} />
+          <Route path="step4" element={<Page3/>} />
+          <Route path="step5" element={<Page4/>} />
+          <Route path="step6" element={<Page5/>} />
+          <Route path="step7" element={<Page6/>} />
+          <Route path="step8" element={<Page7/>} />
         </Route>
       </Routes>
     </div>

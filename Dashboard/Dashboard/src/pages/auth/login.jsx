@@ -4,11 +4,12 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import jwtDecode from 'jwt-decode';
 
 function Login({ setToken }) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: ''
     });
 
@@ -21,11 +22,20 @@ function Login({ setToken }) {
 
         try {
             const response = await axios.post('http://localhost:3001/api/login', formData);
-            const { token } = response.data;
+            console.log(response);
+
+            const { user,token } = response.data;
+
+            console.log(response.data)
+            const decodedToken = jwtDecode(token);
+            console.log('Decoded Token:', decodedToken);
+            console.log(decodedToken.email)
             setToken(token);
             localStorage.setItem('token', token);
+            console.log('User Details:', user);
             toast.success('Login successful');
-            navigate('/dashboard');
+            navigate('/dashboard', { state: { user, token } });
+
         } catch (error) {
             console.error(error.response.data.message);
             toast.error('Invalid credentials');
@@ -43,17 +53,17 @@ function Login({ setToken }) {
                                 <h4 className="mb-4 text-center" style={{ color: 'green' }}>Pain Management</h4>
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-outline mb-3">
-                                        <label className="form-label" htmlFor="username">
+                                        <label className="form-label" htmlFor="email">
                                             Email
                                         </label>
                                         <input
                                             type="email"
-                                            id="username"
+                                            id="email"
                                             placeholder="Email"
-                                            name='username'
+                                            name='email'
                                             className="form-control"
                                             onChange={handleChange}
-                                            value={formData.username}
+                                            value={formData.email}
                                             required
                                         />
                                     </div>
@@ -78,10 +88,10 @@ function Login({ setToken }) {
                                         </button>
                                     </div>
                                 </form>
-                                <p className="small fw-bold mt-2 pt-1 mb-0">
+                                {/* <p className="small fw-bold mt-2 pt-1 mb-0">
                                     Don't have an account?
                                     <Link to="/register" className="link-danger">Register</Link>
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                     </div>

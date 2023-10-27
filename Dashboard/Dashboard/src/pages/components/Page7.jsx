@@ -4,6 +4,7 @@ import Textinput from '@/components/ui/Textinput';
 import Card from '@/components/ui/Card';
 import { useLocation } from 'react-router-dom';
 import Select from "react-select";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,7 +13,7 @@ function Page7() {
 
     const location = useLocation();
     const defaultValue = new URLSearchParams(location.search).get('defaultValue');
-    
+    const navigate = useNavigate()
     const [Patient, setPatient] = useState(null);
 
 
@@ -31,12 +32,6 @@ function Page7() {
             document.getElementById('defaultsize2').value = defaultValue + newDefaultValue;
           };
     
-          const handleNext = () => {
-            const newDefaultValue = Patient ? Patient.value : "";
-            const combinedDefaultValue = defaultValue + newDefaultValue;
-            navigate(`/test3?defaultValue=${combinedDefaultValue}`);
-          };  
-
           const handleCancel = () => {
             window.location.reload(); 
           };
@@ -51,12 +46,12 @@ function Page7() {
                 onClick : handleCancel
             },
             {
-                title: "Submit",
-    
-            },
-            {
                 title: "Back",
                onClick: handleBack
+            },
+            {
+                title: "Submit",
+    
             },
             
         ];

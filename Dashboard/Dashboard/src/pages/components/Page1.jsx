@@ -51,7 +51,7 @@ function Page1() {
       const handleNext = () => {
         const newDefaultValue = selectedDisease ? selectedDisease.value : "";
         const combinedDefaultValue = defaultValue + newDefaultValue;
-        navigate(`/test2?defaultValue=${combinedDefaultValue}`);
+        navigate(`/step3?defaultValue=${combinedDefaultValue}`);
       };   
       
       const handleCancel = () => {

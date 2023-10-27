@@ -29,7 +29,7 @@ function Page() {
     {
       title: "Next",
       onClick: () => {
-        navigate(`/test1?defaultValue=${region}`);
+        navigate(`/step2?defaultValue=${region}`);
       },
     },
   ];

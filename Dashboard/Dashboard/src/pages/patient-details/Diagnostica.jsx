@@ -2,7 +2,7 @@ import React from 'react';
 
 function Diagnostica() {
   const openNewTab = () => {
-    window.open('test');
+    window.open('step1');
   };
 
   return (

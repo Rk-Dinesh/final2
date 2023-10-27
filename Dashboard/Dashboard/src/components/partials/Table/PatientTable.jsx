@@ -82,7 +82,7 @@ const PatientTable = () => {
   };
 
   const handleDelete = async (email) => {
-    const endpoints = ['patients', 'pcs', 'moxfq',  'sf_36s', 'image',  'saveData', 'patientinfo'];
+    const endpoints = ['patients', 'pcs', 'moxfq',  'sf_36s', 'image','patientinfo'];
 
     for (const endpoint of endpoints) {
         try {

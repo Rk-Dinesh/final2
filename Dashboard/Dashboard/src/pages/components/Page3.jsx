@@ -199,7 +199,7 @@ function Page3() {
         const combinedValues =`[${ selectedValues.join(' ')}] : `;
     
         // Build the updated URL
-        const updatedURL = `/test4?defaultValue=${defaultValue} ${combinedValues}`;
+        const updatedURL = `/step5?defaultValue=${defaultValue} ${combinedValues}`;
     
         // Navigate to the updated URL
         navigate(updatedURL);

@@ -117,7 +117,7 @@ function Page6() {
         const combinedValues = `[${ selectedValues.join(' ')}]`;
     
         // Build the updated URL
-        const updatedURL = `/test7?defaultValue=${defaultValue} ${combinedValues}`;
+        const updatedURL = `/step8?defaultValue=${defaultValue} ${combinedValues}`;
     
         // Navigate to the updated URL
         navigate(updatedURL);

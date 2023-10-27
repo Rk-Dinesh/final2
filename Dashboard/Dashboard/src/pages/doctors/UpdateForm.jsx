@@ -13,7 +13,7 @@ const FormValidationSchema = yup.object({
   lastname: yup.string().required("Last Name is required"),
   phone: yup.string().required("Phone Number is required"),
   email: yup.string().required("Email is Required"),
-  password: yup.string().required("Password is Required"),
+
 });
 
 const UpdateDoctor = () => {
@@ -47,14 +47,14 @@ const UpdateDoctor = () => {
         setLastname(responseData.lastname)
         setPhone(responseData.phone)
         setEmail(responseData.email)
-        setPassword(responseData.password)
+       
 
         setValue("userid", responseData.userid);
         setValue("firstname", responseData.firstname);
         setValue("lastname", responseData.lastname);
         setValue("phone", responseData.phone);
         setValue("email", responseData.email);
-        setValue("password", responseData.password);
+       
       } catch (error) {
         console.log(error);
       }
@@ -73,7 +73,7 @@ const UpdateDoctor = () => {
         lastname: lastname,
         phone: phone,
         email: email,
-        password: password
+       
       });
 
       console.log(response);
@@ -139,15 +139,7 @@ const UpdateDoctor = () => {
                   onChange={(e) => setPhone(e.target.value)}
                   error={errors.phone}
                 />
-                <Textinput
-                  name="password"
-                  label="Password*"
-                  placeholder="Password"
-                  value={password}
-                  register={register}
-                  onChange={(e) => setPassword(e.target.value)}
-                  error={errors.password}
-                />
+               
                 <div className="ltr:text-right rtl:text-left">
                   <button className="btn btn-dark text-center" type="submit">
                     Update

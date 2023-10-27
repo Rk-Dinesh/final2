@@ -5,6 +5,8 @@ import * as yup from "yup";
 import Textinput from "@/components/ui/Textinput";
 import Card from "@/components/ui/Card";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const FormValidationSchema = yup
@@ -30,14 +32,31 @@ const Add_Board = () => {
 
   const onSubmit = async (data) => {
 
+    // try {
+    //   const response = await axios.post('http://localhost:3001/doctor', data);
+    //   console.log('Doctor added:', response.data);
+    // } catch (error) {
+    //   console.error('Error adding doctor:', error);
+    // }
+    // history.back();
+    // console.log(data);
+
     try {
       const response = await axios.post('http://localhost:3001/doctor', data);
-      console.log('Doctor added:', response.data);
-    } catch (error) {
-      console.error('Error adding doctor:', error);
-    }
-    history.back();
-    console.log(data);
+      console.log(response.data);
+
+      if (response.status === 200) {
+          toast.success('User created successfully');
+          history.back();
+      }
+  } catch (error) {
+      console.error(error);
+      if (error.response && error.response.status === 409) {
+          toast.error('User already exists');
+      } else {
+          toast.error('User already exists');
+      }
+  }
   };
 
 

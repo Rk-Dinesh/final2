@@ -19,7 +19,7 @@ function Page5() {
         const handleNext = () => {
            
             const updatedDefaultValue = `${defaultValue} ${inputValue}`;
-            navigate(`/test6?defaultValue=${updatedDefaultValue}`);
+            navigate(`/step7?defaultValue=${updatedDefaultValue}`);
         };   
 
     const styles = {
