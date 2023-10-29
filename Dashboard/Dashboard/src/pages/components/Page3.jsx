@@ -5,6 +5,14 @@ import Card from '@/components/ui/Card';
 import { useNavigate } from 'react-router-dom';
 import Select from "react-select";
 import { useLocation } from 'react-router-dom';
+import MobileLogo from "@/assets/img1.png";
+import Image2 from "@/assets/img2.png";
+import Image3 from "@/assets/img3.png";
+import Image4 from "@/assets/img4.png";
+import Image5 from "@/assets/img5.png";
+
+
+
 
 
 
@@ -13,6 +21,7 @@ function Page3() {
     const navigate = useNavigate();
     const location = useLocation();
     const defaultValue = new URLSearchParams(location.search).get('defaultValue');
+    const email = new URLSearchParams(location.search).get('email');
 
     const [Img11, setImg11] = useState(null)
     const [Img12, setImg12] = useState(null)
@@ -110,13 +119,13 @@ function Page3() {
         const img3Value = Img13 ? Img13.value : '';
 
 
-       
-     if (Img11 && Img12 && img3Value && selectedOption.length === 3) {
+
+        if (Img11 && Img12 && img3Value && selectedOption.length === 3) {
             document.getElementById('defaultsize2').value = `${defaultValue} ${img1Value} ${img2Value} ${img3Value} ${newDefaultValue[0]} ${newDefaultValue[1]}${newDefaultValue[2]}`;
-        }else if  (Img11 && Img12 &&  selectedOption.length === 3) {
+        } else if (Img11 && Img12 && selectedOption.length === 3) {
             document.getElementById('defaultsize2').value = `${defaultValue}  ${img1Value} ${img2Value}${newDefaultValue[0]} ${newDefaultValue[1]}${newDefaultValue[2]} `;
         }
-        else if (Img11 && Img12 &&  selectedOption.length === 2) {
+        else if (Img11 && Img12 && selectedOption.length === 2) {
             document.getElementById('defaultsize2').value = `${defaultValue} ${img1Value}  ${img2Value} ${newDefaultValue[0]} ${newDefaultValue[1]} `;
         }
         else if (Img11 && Img12 && img3Value && selectedOption.length === 2) {
@@ -125,7 +134,7 @@ function Page3() {
         else if (Img11 && Img12 && img3Value && selectedOption.length === 1) {
             document.getElementById('defaultsize2').value = `${defaultValue} ${img1Value} ${img2Value} ${img3Value} ${newDefaultValue[0]} `;
         }
-        else if (Img11 && Img12 &&  selectedOption.length === 1) {
+        else if (Img11 && Img12 && selectedOption.length === 1) {
             document.getElementById('defaultsize2').value = `${defaultValue} ${img1Value} ${img2Value} ${newDefaultValue[0]} `;
         }
         else if (Img11 && selectedOption.length === 3) {
@@ -155,59 +164,60 @@ function Page3() {
         else if (selectedOption.length === 1) {
             document.getElementById('defaultsize2').value = `${defaultValue}  ${newDefaultValue[0]}`;
         }
-     
+
         else {
             document.getElementById('defaultsize2').value = `${defaultValue}`;
         }
     };
     const handleimg5Change = (selectedOption) => {
         setImg15(selectedOption);
-        
+
         const img1Value = Img11 ? Img11.value : "";
         const img2Value = Img12 ? Img12.value : "";
         const img3Value = Img13 ? Img13.value : '';
         const img4Value = Img14 ? Img14.value : '';
         const newDefaultValue = selectedOption ? selectedOption.value : "";
-        if (Img11 && Img12 && Img13 ) {
+        if (Img11 && Img12 && Img13) {
             document.getElementById('defaultsize2').value = `${defaultValue}   ${img1Value}  ${img2Value} ${img3Value} ${newDefaultValue} `;
-        } else if (Img11 && Img12 ) {
+        } else if (Img11 && Img12) {
             document.getElementById('defaultsize2').value = `${defaultValue}   ${img1Value}  ${img2Value} ${newDefaultValue} `;
-        } else if (Img11 &&  Img13  ) {
+        } else if (Img11 && Img13) {
             document.getElementById('defaultsize2').value = `${defaultValue}  ${img1Value}  ${img3Value} ${newDefaultValue} `;
-        } else if( Img12 && Img13  ) {
+        } else if (Img12 && Img13) {
             document.getElementById('defaultsize2').value = `${defaultValue}  ${img2Value} ${img3Value} ${newDefaultValue} `;
-        }else {
-             document.getElementById('defaultsize2').value = defaultValue + newDefaultValue;}
-       
-      };
+        } else {
+            document.getElementById('defaultsize2').value = defaultValue + newDefaultValue;
+        }
 
-      const handleNext = () => {
+    };
+
+    const handleNext = () => {
         // Create an array to store selected values from dropdowns
         const selectedValues = [];
-    
+
         // Add values from dropdowns to the array
         if (Img11) selectedValues.push(Img11.value);
         if (Img12) selectedValues.push(Img12.value);
         if (Img13) selectedValues.push(Img13.value);
         if (Img14) {
             selectedValues.push(`(${Img14.map((option) => option.value).join(':')}:4)`);
-          }
-          
+        }
+
         if (Img15) selectedValues.push(Img15.value);
-    
+
         // Combine the selected values
-        const combinedValues =`[${ selectedValues.join(' ')}] : `;
-    
+        const combinedValues = `[${selectedValues.join(' ')}] : `;
+
         // Build the updated URL
-        const updatedURL = `/step5?defaultValue=${defaultValue} ${combinedValues}`;
-    
+        const updatedURL = `/step5?defaultValue=${defaultValue} ${combinedValues}&email=${email}`;
+
         // Navigate to the updated URL
         navigate(updatedURL);
     };
-    
+
     const handleCancel = () => {
-        window.location.reload(); 
-      };
+        window.location.reload();
+    };
 
 
     const styles = {
@@ -223,16 +233,16 @@ function Page3() {
     const buttons = [
         {
             title: "Cancel",
-            onClick : handleCancel
+            onClick: handleCancel
         },
-       
+
         {
             title: "Back",
             onClick: handleBack
         },
         {
             title: "Next",
-            onClick : handleNext
+            onClick: handleNext
         },
     ];
 
@@ -240,10 +250,10 @@ function Page3() {
 
     return (
         <div>
-            <div className="flex justify-between flex-wrap items-center mb-10">
-                <h4 className="font-medium lg:text-2xl text-xl active capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4">
+            <div className="flex justify-between flex-wrap items-center mb-3">
+                <h5 className="font-medium lg:text-2xl text-xl active capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4">
                     Diagnostica Code :
-                </h4>
+                </h5>
             </div>
             <Card>
                 <div className="space-y-8 px-8 py-8">
@@ -256,36 +266,51 @@ function Page3() {
                         defaultValue={defaultValue}
                     />
                 </div>
-
-                <div className="space-y-10 px-8 py-8">
-                    <p><b>STEP 4:</b> The individual bones are categorized (labelled) as per the images below.
+                <div className='space-y-8 px-8 py-8' >
+                <p><b>STEP 4:</b> The individual bones are categorized (labelled) as per the images below.
                         Click on the region to select.</p>
-                    <Select
-                        className="react-select"
-                        classNamePrefix="select"
-                        onChange={handleimg1Change}
-                        options={Img1}
-                        styles={styles}
-                        id="hh"
-                    />
-                    <Select
-                        className="react-select"
-                        classNamePrefix="select"
-                        onChange={handleimg2Change}
-                        options={Img2}
-                        styles={styles}
-                        id="hh"
-                    />
-                    <Select
-                        className="react-select"
-                        classNamePrefix="select"
-                        onChange={handleimg3Change}
-                        options={Img3}
-                        styles={styles}
-                        id="hh"
-                    />
-                    <div>
+                </div>
 
+                <div className="flex justify-around ">
+                    <div>
+                        <img src={MobileLogo} alt="hello" style={{ width: 200, height: 200 }} />
+                        <br />
+                        <Select
+                            className="react-select"
+                            classNamePrefix="select"
+                            onChange={handleimg1Change}
+                            options={Img1}
+                            styles={styles}
+                            id="hh"
+                        />
+                    </div>
+                    <div>
+                        <img src={Image2} alt="hello" style={{ width: 200, height: 200 }} />
+                        <br />
+                        <Select
+                            className="react-select"
+                            classNamePrefix="select"
+                            onChange={handleimg2Change}
+                            options={Img2}
+                            styles={styles}
+                            id="hh"
+                        />
+                    </div>
+                    <div>
+                        <img src={Image3} alt="hello" style={{ width: 200, height: 200 }} />
+                        <br />
+                        <Select
+                            className="react-select"
+                            classNamePrefix="select"
+                            onChange={handleimg3Change}
+                            options={Img3}
+                            styles={styles}
+                            id="hh"
+                        />
+                    </div>
+                    <div>
+                        <img src={Image4} alt="hello" style={{ width: 200, height: 200 }} />
+                        <br />
                         <Select
                             isClearable={false}
                             onChange={handleimg4Change}
@@ -298,18 +323,23 @@ function Page3() {
                             id="mul_1"
                         />
                     </div>
-                    <Select
-                        className="react-select"
-                        classNamePrefix="select"
-                        onChange={handleimg5Change}
-                        options={Img5}
-                        styles={styles}
-                        id="hh"
-                    />
+                    <div>
+                        <img src={Image5} alt="hello" style={{ width: 200, height: 200 }} />
+                        <br />
+                        <Select
+                            className="react-select"
+                            classNamePrefix="select"
+                            onChange={handleimg5Change}
+                            options={Img5}
+                            styles={styles}
+                            id="hh"
+                        />
+                    </div>
                 </div>
-
-                <div className="flex justify-around">
-                    {buttons.map((button, index) => (
+                <br />
+                <br />
+                   <div className='flex justify-around'>
+                   {buttons.map((button, index) => (
                         <button
                             key={index}
                             type="button"
@@ -319,8 +349,8 @@ function Page3() {
                             {button.title}
                         </button>
                     ))}
+                 
                 </div>
-
 
             </Card >
         </div >

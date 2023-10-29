@@ -10,6 +10,7 @@ import Row4 from "@/components/ui/Row4";
 import Row5 from "@/components/ui/Row5";
 import Row6 from "@/components/ui/Row6";
 import Row7 from "@/components/ui/Row7";
+import Row8 from "@/components/ui/row8";
 
 const Patient_Details = () => {
 
@@ -93,6 +94,7 @@ const Patient_Details = () => {
                                 <Row1 className="mb-1" data={RowData} />
                                 <Row2 className="mb-1" data={RowData} />
                                 <Row3 className="mb-1" data={RowData} />
+                                <Row8 className="mb-1" data={RowData} />
                                 <Row4 className="mb-1" data={RowData} />
                                 <Row5 className="mb-1" data={RowData} />
                                 <Row6 className="mb-1" data={RowData} />

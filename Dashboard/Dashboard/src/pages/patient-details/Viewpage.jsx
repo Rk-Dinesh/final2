@@ -81,6 +81,7 @@ const Viewpage = () => {
             {activeComponent === "Images" && <Images />}
             {activeComponent === "Diagnostica" && <Diagnostica />}
 
+                                            
 
         </div>
 

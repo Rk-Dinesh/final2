@@ -21,6 +21,7 @@ import Page4 from "./pages/components/Page4";
 import Page5 from "./pages/components/Page5";
 import Page6 from "./pages/components/Page6";
 import Page7 from "./pages/components/Page7";
+import UserProfile from "./components/partials/header/Tools/UserProfile";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -37,6 +38,7 @@ function App() {
           <Route path="view" element={<Viewpage />} />
           <Route path="form" element={<DoctorForm />} />
           <Route path="updateform/:id" element={<UpdateForm />} />
+          <Route path="profile" element={<UserProfile token={token} />} />
           <Route path="step1" element={<Page/>} />
           <Route path="step2" element={<Page1/>} />
           <Route path="step3" element={<Page2/>} />

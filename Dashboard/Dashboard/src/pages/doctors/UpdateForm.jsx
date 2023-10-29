@@ -89,10 +89,11 @@ const UpdateDoctor = () => {
           Update Doctor
         </h4>
       </div>
-      <Card>
-        <div className="grid grid-cols-12 gap-6 mb-6">
-          <div className="2xl:col-span-6 lg:col-span-8 col-span-12">
+      <div>
+        <div className="d-flex  align-items-center">
+          <div className="col-md-6">
             <div className="bg-transparent">
+              <Card>
               <form className="space-y-3" onSubmit={Update}>
                 <Textinput
                   name="userid"
@@ -146,10 +147,11 @@ const UpdateDoctor = () => {
                   </button>
                 </div>
               </form>
+              </Card>
             </div>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };

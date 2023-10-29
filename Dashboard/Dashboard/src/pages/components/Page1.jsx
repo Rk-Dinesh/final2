@@ -16,6 +16,8 @@ function Page1() {
     const defaultValue = new URLSearchParams(location.search).get('defaultValue');
     const [originalDefaultValue, setOriginalDefaultValue] = useState(defaultValue);
     const [selectedDisease, setSelectedDisease] = useState(null);
+    const email = new URLSearchParams(location.search).get('email');
+    
 
     const disease = [
         { value: ": A :", label: "Acute(A)" },
@@ -51,7 +53,7 @@ function Page1() {
       const handleNext = () => {
         const newDefaultValue = selectedDisease ? selectedDisease.value : "";
         const combinedDefaultValue = defaultValue + newDefaultValue;
-        navigate(`/step3?defaultValue=${combinedDefaultValue}`);
+        navigate(`/step3?defaultValue=${combinedDefaultValue}&email=${email}`);
       };   
       
       const handleCancel = () => {

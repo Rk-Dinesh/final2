@@ -4,11 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Textinput from '@/components/ui/Textinput';
 import Card from '@/components/ui/Card';
 import Radio from '@/components/ui/Radio';
+import { useParams } from 'react-router-dom';
 
 function Page() {
+  
   const navigate = useNavigate();
   const [value, setValue] = useState("");
   const [region, setRegion] = useState("");
+  const email = new URLSearchParams(location.search).get('email');
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -27,7 +30,7 @@ function Page() {
     {
       title: "Next",
       onClick: () => {
-        navigate(`/step2?defaultValue=${region}`);
+        navigate(`/step2?defaultValue=${region}&email=${email}`);
       },
     },
   ];

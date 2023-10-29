@@ -14,6 +14,7 @@ function Page2() {
     const navigate = useNavigate();
     const location = useLocation();
     const defaultValue = new URLSearchParams(location.search).get('defaultValue');
+    const email = new URLSearchParams(location.search).get('email');
     
     const [Foot, setFoot] = useState(null);
 
@@ -37,7 +38,7 @@ function Page2() {
       const handleNext = () => {
         const newDefaultValue = Foot ? Foot.value : "";
         const combinedDefaultValue = defaultValue + newDefaultValue;
-        navigate(`/step4?defaultValue=${combinedDefaultValue}`);
+        navigate(`/step4?defaultValue=${combinedDefaultValue}&email=${email}`);
       };   
     const styles = {
         option: (provided, state) => ({

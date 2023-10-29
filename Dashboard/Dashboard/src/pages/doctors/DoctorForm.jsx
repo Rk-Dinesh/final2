@@ -46,17 +46,17 @@ const Add_Board = () => {
       console.log(response.data);
 
       if (response.status === 200) {
-          toast.success('User created successfully');
-          history.back();
+        toast.success('User created successfully');
+        history.back();
       }
-  } catch (error) {
+    } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 409) {
-          toast.error('User already exists');
+        toast.error('User already exists');
       } else {
-          toast.error('User already exists');
+        toast.error('User already exists');
       }
-  }
+    }
   };
 
 
@@ -68,68 +68,69 @@ const Add_Board = () => {
           New Doctor
         </h4>
       </div>
-      <Card >
-        <div className="grid grid-cols-12 gap-6 mb-6">
-          <div className="2xl:col-span-6 lg:col-span-8 col-span-12">
-            <div className=" bg-transparent">
+      <div>
+        <div className="d-flex  align-items-center">
+          <div className="col-md-6">
+            <div className=" ">
+              <Card>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
 
-                <Textinput
-                  name="userid"
-                  label="Doctor ID*"
-                  placeholder="userid"
-                  register={register}
-                  error={errors.userid}
-                />
-                <Textinput
-                  name="firstname"
-                  label="First Name*"
-                  placeholder="First Name"
-                  register={register}
-                  error={errors.firstname}
-                />
-                <Textinput
-                  name="lastname"
-                  label="Last Name*"
-                  placeholder="Last Name"
-                  register={register}
-                  error={errors.lastname}
-                />
-                <Textinput
-                  name="email"
-                  label="Email*"
-                  placeholder="Email"
-                  register={register}
-                  error={errors.email}
-                />
-                <Textinput
-                  name="phone"
-                  label="Phone*"
-                  placeholder="Phone"
-                  register={register}
-                  error={errors.phone}
-                />
-                <Textinput
-                  name="password"
-                  label="Password*"
-                  placeholder="Password"
-                  register={register}
-                  error={errors.password}
-                />
+                  <Textinput
+                    name="userid"
+                    label="Doctor ID*"
+                    placeholder="userid"
+                    register={register}
+                    error={errors.userid}
+                  />
+                  <Textinput
+                    name="firstname"
+                    label="First Name*"
+                    placeholder="First Name"
+                    register={register}
+                    error={errors.firstname}
+                  />
+                  <Textinput
+                    name="lastname"
+                    label="Last Name*"
+                    placeholder="Last Name"
+                    register={register}
+                    error={errors.lastname}
+                  />
+                  <Textinput
+                    name="email"
+                    label="Email*"
+                    placeholder="Email"
+                    register={register}
+                    error={errors.email}
+                  />
+                  <Textinput
+                    name="phone"
+                    label="Phone*"
+                    placeholder="Phone"
+                    register={register}
+                    error={errors.phone}
+                  />
+                  <Textinput
+                    name="password"
+                    label="Password*"
+                    placeholder="Password"
+                    register={register}
+                    error={errors.password}
+                  />
 
 
 
-                <div className="ltr:text-right rtl:text-left">
-                  <button className="btn btn-dark text-center">Add</button>
-                </div>
-              </form>
-
+                  <div className="ltr:text-right rtl:text-left">
+                    <button className="btn btn-dark text-center">Add</button>
+                  </div>
+                </form>
+              </Card>
             </div>
           </div>
         </div>
 
-      </Card>
+      </div>
     </div>
   );
 };

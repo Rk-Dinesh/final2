@@ -5,6 +5,7 @@ import Card from '@/components/ui/Card';
 import { useLocation } from 'react-router-dom';
 import Select from "react-select";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -15,9 +16,11 @@ function Page7() {
     const defaultValue = new URLSearchParams(location.search).get('defaultValue');
     const navigate = useNavigate()
     const [Patient, setPatient] = useState(null);
-
-
-
+    const [NewDefaultValue, setNewDefaultValue] = useState('')
+    //const [email, setEmail] = useState('')
+    const email = new URLSearchParams(location.search).get('email');
+    
+    
     const patient = [
         { value: "ASA1", label: "ASA 1 – Normal healthy patient" },
         { value: "ASA2", label: "ASA 2 – Patient with mild systemic disease" },
@@ -30,6 +33,7 @@ function Page7() {
             setPatient(selectedOption);
             const newDefaultValue = selectedOption ? selectedOption.value : "";
             document.getElementById('defaultsize2').value = defaultValue + newDefaultValue;
+           setNewDefaultValue(newDefaultValue)
           };
     
           const handleCancel = () => {
@@ -39,6 +43,36 @@ function Page7() {
           const handleBack = () => {
             navigate(-1);
         };
+
+      
+        
+       const handleSubmit = async () => {
+        const requestData = {
+            data: `${defaultValue} ${NewDefaultValue}`,
+            email: email,
+        };
+        console.log(requestData)
+
+    try {
+        const response = await axios.post('http://localhost:3001/data', requestData);
+        console.log(response.data);
+
+        if (response.status === 200) {
+            window.close();
+        } else {
+            console.log("Server returned a non-200 status code.");
+        }
+    } catch (error) {
+        console.error("Error in post:", error);
+        if (error.response) {
+            console.error("Response data:", error.response.data);
+        }
+    }
+};
+
+const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+};
 
            const buttons = [
             {
@@ -51,8 +85,9 @@ function Page7() {
             },
             {
                 title: "Submit",
-    
+                onClick: () => handleSubmit() 
             },
+            
             
         ];
 
@@ -77,7 +112,7 @@ function Page7() {
                         type="text"
                         placeholder="DIAGNOSTICA CODE"
                         horizontal
-                        defaultValue={defaultValue}
+                        defaultValue={`${defaultValue} ${NewDefaultValue}`}
                     />
                 </div>
 
@@ -93,7 +128,7 @@ American Society of Anaesthesiologists
                         styles={styles}
                         id="hh"
                     />
-                </div>
+                </div> 
 
                 <div className="flex justify-around">
                     {buttons.map((button, index) => (
