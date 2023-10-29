@@ -44,7 +44,7 @@ function Login({ setToken }) {
     }
 
     return (
-        <section className="vh-100" style={{ backgroundColor: "#90a4ae" }}>
+        <section className="vh-100" style={{ backgroundColor: "#EEF1F9" }}>
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -56,7 +56,7 @@ function Login({ setToken }) {
                                     </div>
                               
                                 <h6 className="mb-2 text-center" style={{ color: '#097969' }}>Pain Management</h6>
-                                <h5 className="mb-2 text-center">Sign in</h5>
+                                <h6 className="mb-2 text-center">Sign in</h6>
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-outline mb-3">
                                         <label className="form-label" htmlFor="email">
