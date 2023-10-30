@@ -31,7 +31,7 @@ function App() {
       <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
         <Route path="" element={<Login setToken={setToken} />} />
-        <Route path="/*" element={token ? <Layout /> : <Navigate to='/' />}>
+        <Route path="/*" element={token ? <Layout token={token}/> : <Navigate to='/' />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="patient" element={<Patient />} />
           <Route path="doctors" element={<Doctor />} />

@@ -23,19 +23,15 @@ function Login({ setToken }) {
 
         try {
             const response = await axios.post('http://localhost:3001/api/login', formData);
-            console.log(response);
+            
 
-            const { user, token } = response.data;
-
-            console.log(response.data)
+            const { token } = response.data;
             const decodedToken = jwtDecode(token);
-            console.log('Decoded Token:', decodedToken);
-            console.log(decodedToken.email)
             setToken(token);
             localStorage.setItem('token', token);
-            console.log('User Details:', user);
+            
             toast.success('Login successful');
-            navigate('/dashboard', { state: { user, token } });
+            navigate('/dashboard', );
 
         } catch (error) {
             console.error(error.response.data.message);

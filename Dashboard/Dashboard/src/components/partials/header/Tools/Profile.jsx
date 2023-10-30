@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Dropdown from "@/components/ui/Dropdown";
 import Icon from "@/components/ui/Icon";
 import { Menu } from "@headlessui/react";
@@ -6,8 +6,31 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "@/store/api/auth/authSlice";
 import UserAvatar from "@/assets/images.png";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
 
-const profileLabel =() => {
+
+const profileLabel =({token}) => {
+
+  const decodedToken = jwtDecode(token);
+  const initialUserData = {firstname: ""};
+
+  const [userData, setUserData] = useState(initialUserData);
+  useEffect(() => {
+   
+    const decodedEmail = decodedToken.email;
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/doctor/${decodedEmail}`);
+        const responseData = response.data;
+        setUserData(responseData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserData();
+  }, [decodedToken.email]);
 
 
   return (
@@ -23,20 +46,24 @@ const profileLabel =() => {
       </div>
       <div className="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">
         <span className="overflow-hidden text-ellipsis whitespace-nowrap w-[85px] block">
-       Admin
+            {userData.firstname}
         </span>
         <span className="text-base inline-block ltr:ml-[10px] rtl:mr-[10px]">
           <Icon icon="heroicons-outline:chevron-down"></Icon>
         </span>
       </div>
+      
     </div>
   );
 };
 
-const Profile = () => {
-  const navigate = useNavigate();
+const Profile = ({token}) => {
+  
+ 
+    const navigate = useNavigate();
   const dispatch = useDispatch();
-
+ 
+  
 
   const handleLogout = () => {
 
@@ -64,7 +91,7 @@ const Profile = () => {
   ];
 
   return (
-    <Dropdown label={profileLabel()} classMenuItems="w-[180px] top-[58px]">
+    <Dropdown label={profileLabel({token})} classMenuItems="w-[180px] top-[58px]">
       {ProfileMenu.map((item, index) => (
         <Menu.Item key={index}>
           {({ active }) => (

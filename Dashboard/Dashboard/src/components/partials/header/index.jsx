@@ -12,7 +12,8 @@ import useRtl from "@/hooks/useRtl";
 import useMobileMenu from "@/hooks/useMobileMenu";
 
 
-const Header = ({ className = "custom-class" }) => {
+const Header = ({ className = "custom-class", token }) => {
+ 
   const [collapsed, setMenuCollapsed] = useSidebar();
   const { width, breakpoints } = useWidth();
   const [navbarType] = useNavbarType();
@@ -101,7 +102,7 @@ const Header = ({ className = "custom-class" }) => {
           ) : null}
           {/* Nav Tools  */}
           <div className="nav-tools flex items-center lg:space-x-6 space-x-3 rtl:space-x-reverse">
-            {width >= breakpoints.md && <Profile />}
+            {width >= breakpoints.md && <Profile token={token} />}
             {width <= breakpoints.md && (
               <div
                 className="cursor-pointer text-slate-900 dark:text-white text-2xl"

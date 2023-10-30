@@ -13,7 +13,8 @@ import { useSelector } from "react-redux";
 import Loading from "@/components/Loading";
 import { motion } from "framer-motion";
 
-const Layout = () => {
+const Layout = ({token}) => {
+  
   const { width, breakpoints } = useWidth();
   const [collapsed] = useSidebar();
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Layout = () => {
   return (
     <>
       <ToastContainer />
-      <Header className={width > breakpoints.xl ? switchHeaderClass() : ""} />
+      <Header className={width > breakpoints.xl ? switchHeaderClass() : ""} token={token}/>
       {menuType === "vertical" && width > breakpoints.xl && !menuHidden && (
         <Sidebar />
       )}
